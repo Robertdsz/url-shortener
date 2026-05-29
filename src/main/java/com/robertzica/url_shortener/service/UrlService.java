@@ -22,4 +22,10 @@ public class UrlService {
         url.setAcessos(0L);
         return repository.save(url);
     }
+
+    public Url procurarUrl(String codigo) {
+        Url url = repository.findByCodigo(codigo);
+        url.setAcessos(url.getAcessos() + 1);
+        return repository.save(url);
+    }
 }

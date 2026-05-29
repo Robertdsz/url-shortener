@@ -4,10 +4,7 @@ package com.robertzica.url_shortener.controller;
 import com.robertzica.url_shortener.model.Url;
 import com.robertzica.url_shortener.service.UrlService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/url")
@@ -19,5 +16,10 @@ public class UrlController {
     @PostMapping("/encurtar")
     public Url encurtar(@RequestBody String urlOriginal) {
         return service.encurtarUrl(urlOriginal);
+    }
+
+    @GetMapping("/{codigo}")
+    public Url procurar(@PathVariable String codigo) {
+        return service.procurarUrl(codigo);
     }
 }
